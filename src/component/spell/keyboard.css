@@ -1,0 +1,9 @@
+.keybaord{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(max-content,1 fr));
+}
+.keyboard--key {
+  font-size:2em;
+  background-color:yellowgreen;
+  
+}

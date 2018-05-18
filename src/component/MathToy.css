@@ -1,0 +1,34 @@
+.container {
+   display:flex;
+  flex-direction:column;
+  font-size:32px;
+}
+.toyContainer {
+   display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  width:960px;
+  height:10vh;
+  
+}
+
+.toyContainer>div{
+   border:1px solid black;
+  margin:32px 10px;
+}
+
+.toyContainer>.selected{
+  border:2px solid red;
+}
+
+.expression {
+   /*text-align:center; */
+  padding:0 0 0 400px;
+}
+.controls {
+   display:flex;
+  justify-content:space-between;
+}
+.controls>*{
+ flex:1 1; 
+}
