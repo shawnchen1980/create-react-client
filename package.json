@@ -16,6 +16,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "safe-eval": "^0.4.1",
+    "safer-eval": "^1.2.3",
     "swipejs": "^2.2.11"
   },
   "proxy": "https://create-react-server.glitch.me",

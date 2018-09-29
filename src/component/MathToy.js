@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import './MathToy.css';
-const safeEval = eval;
+const safeEval = require("safer-eval");
 class MathToy extends Component {
    constructor(props){
       super(props);
