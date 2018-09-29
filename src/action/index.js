@@ -1,9 +1,10 @@
 import * as types from './types';
 import axios from 'axios';
+export const signInUser=(user)=>({type:types.AUTH_SIGNIN,payload:user});
 export const signInSubmit=({email,password})=>(dispatch)=>{
     axios.post("/signin",{email,password}).then(res=>{console.log(res.data);dispatch(signInUser(res.data))})
 };
-export const signInUser=(user)=>({type:types.AUTH_SIGNIN,payload:user});
+
 export const signOut=()=>({type:types.AUTH_SIGNOUT});
 export const setID=(userID)=>({type:types.PROFILE_SETID,payload:userID});
 

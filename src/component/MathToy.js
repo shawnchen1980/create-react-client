@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './MathToy.css';
+import safeEval from 'safe-eval';
 class MathToy extends Component {
    constructor(props){
       super(props);
@@ -39,7 +40,7 @@ class MathToy extends Component {
   }
   delMark(){
     const {current,selectedIndex}=this.state;
-    if(selectedIndex===0 && current[0]==="+" || ["(",")"].includes(current[selectedIndex])) {
+    if((selectedIndex===0 && current[0]==="+") || ["(",")"].includes(current[selectedIndex])) {
       const arr=[...current.slice(0,selectedIndex),...current.slice(selectedIndex+1)];
       this.setState({current:arr,selectedIndex:null});
       
@@ -58,7 +59,7 @@ class MathToy extends Component {
       const right=current.indexOf(")");
       if(right<0||right<left){alert("括号数量与位置有问题，不能计算");return;}
       newHis=[...history,current];
-      result=eval(current.slice(left,right+1).join(""));
+      result=safeEval(current.slice(left,right+1).join(""));
       arr=[...current.slice(0,left),""+result,...current.slice(right+1)];
       //this.setState({current:arr,selectedIndex:null});
     }
@@ -66,7 +67,7 @@ class MathToy extends Component {
       if(current[0]==="+"){alert("计算前请把开始加号去掉！");return;}
       if(current.length<3){alert("当前显示的已经是最终计算结果");return;}
       newHis=[...history,current];
-      result=eval(current.slice(0,3).join(""));
+      result=safeEval(current.slice(0,3).join(""));
       arr=[""+result,...current.slice(3)];
     }
     
@@ -89,7 +90,7 @@ class MathToy extends Component {
   compare(){
     const {current,history}=this.state;
     try{
-      if(eval(current.join(""))===eval(history[0].join(""))) return 1;
+      if(safeEval(current.join(""))===safeEval(history[0].join(""))) return 1;
       return 0;
     }
     catch(e){

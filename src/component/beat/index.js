@@ -64,7 +64,7 @@ class BeatPad extends Component{
       if(this.state.counter%3<1){console.log(`左手第${Math.floor((this.state.counter%12)/3)+1}拍`)}
   }
   render(){
-    const {subLength}=this.props; 
+    //const {subLength}=this.props; 
     return <Aux><button onClick={()=>{this.handleSwitch()}} onKeyDown={(e)=>{e.preventDefault();this.handleKeyDown();}} >Switch</button>
     <input type="range" min="0" max="100" step="10" onChange={(e)=>{console.log(e.target.value)}}/>
     <Beat subLength={1} beatLength={3} length={12} counter={this.state.counter} frequency={261.6} on={this.state.on} osc={this.state.osc} pitches={[pitch.a5,pitch.g5,pitch.f5,pitch.e5]}/>
