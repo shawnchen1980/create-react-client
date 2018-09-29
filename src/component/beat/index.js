@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import Aux from '../../utility/Aux';
+import Aux from '../../utility/Au';
 import './beat.css';
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const pitch={c3:130.6	,c3s:138.6,	d3:146.85,	d3s:155.55,	e3:164.8,	f3:174.6,	f3s:185,	g3:196,	g3s:207.65,	a3:220,	a3s:233.1,	b3:246.95,

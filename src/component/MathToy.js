@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import './MathToy.css';
-import Aux from '../utility/Aux';
+import Aux from '../utility/Au';
 class MathToy extends Component {
    constructor(props){
       super(props);

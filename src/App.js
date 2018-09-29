@@ -9,7 +9,7 @@ import axios from 'axios';
 import * as actions from './action';
 import {connect} from 'react-redux';
 import Profile from './container/Profile';
-import Aux from './utility/Aux';
+import Aux from './utility/Au';
 import MathPane from './component/MathPane';
 import SpellTest from './component/spell/SpellTest';
 import TestSuite from './component/spell/TestSuite';
