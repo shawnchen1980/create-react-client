@@ -1,7 +1,13 @@
 import React,{Component} from 'react'
 import Aux from '../../utility/Au';
 import './beat.css';
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let audioCtx= new (window.AudioContext || window.webkitAudioContext||AudioContext)();
+// if(window.AudioContext){
+//   audioCtx=new window.AudioContext();
+// }
+// else{
+//   audioCtx=new window.webkitAudioContext();
+// }
 const pitch={c3:130.6	,c3s:138.6,	d3:146.85,	d3s:155.55,	e3:164.8,	f3:174.6,	f3s:185,	g3:196,	g3s:207.65,	a3:220,	a3s:233.1,	b3:246.95,
 c4:261.6,c4s:277.2,d4:293.7,d4s:311.1,e4:329.6,f4:349.2,f4s:370.0,g4:392,g4s:415.3,a4:440,a4s:466.2,b4:493.9,c5:523.3,d5:587.3,e5:659.3,f5:698.4,g5:784,a5:880,b5:987.8};
 const Beat=(props)=>{

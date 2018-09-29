@@ -11,11 +11,7 @@ import AuthForm from './component/authForm';
 import reducer from './reducer';
 //redux-form的reducer在总reducer中的key必须是form
 
-const exportedApp=(<Provider store={createStore(reducer,applyMiddleware(thunk,logger))}>
+const exportedApp=()=>(<Provider store={createStore(reducer,applyMiddleware(thunk,logger))}>
 <App />
 </Provider>)
-ReactDOM.render(
-  exportedApp,
-  document.getElementById('root')
-);
-
+export default exportedApp;
