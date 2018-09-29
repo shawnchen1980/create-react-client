@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import MathToy from './MathToy';
-import Aux from '../utility/Aux';
+import Aux from '../utility/Au';
 const permutations = arr => {
   if (arr.length <= 2) return arr.length === 2 ? [arr, [arr[1], arr[0]]] : arr;
   return arr.reduce(
