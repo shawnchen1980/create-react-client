@@ -18,7 +18,7 @@ class MathPane extends Component {
  }
   handleClick(){
    //alert(this.el.value); 
-    if(!/^\d*([\+|\-]\d*)+$/.test(this.el.value)) {alert("输入表达式内容不符合要求，需要重新输入");return;}
+    if(!/^\d*([+|-]\d*)+$/.test(this.el.value)) {alert("输入表达式内容不符合要求，需要重新输入");return;}
     //alert(this.el.value.split(/[+|-]/));
     //alert(this.el.value.split(/\d+/).slice(1,-1));
     let arra=this.el.value.split(/[+|-]/);
@@ -33,10 +33,10 @@ class MathPane extends Component {
   generateExpression(){
      let a=Math.ceil(Math.random()*10)*100;
      let b=Math.ceil(Math.random()*a);
-     a=a-b;
+     a-=b;
      let c=Math.ceil(Math.random()*10)*100;
      let d=Math.ceil(Math.random()*100);
-     c=c+d;
+     c+=d;
     let arr=permutations([a,b,c,d]);
     let num=Math.floor(24*Math.random());
     let eq=[arr[num][0]+"",Math.random()>0.5?"+":"-",arr[num][1]+"",Math.random()>0.5?"+":"-",arr[num][2]+"",Math.random()>0.5?"+":"-",arr[num][3]+""];

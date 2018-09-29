@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import './MathToy.css';
-import Aux from '../utility/Au';
 class MathToy extends Component {
    constructor(props){
       super(props);
@@ -33,7 +32,7 @@ class MathToy extends Component {
     this.setState({current:arr});
   }
   addLeadingPlus(){
-    const {current,selectedIndex}=this.state;
+    const {current}=this.state;
     if(current[0]==="+") {alert("表达式开始符号已经是加号，不可以再添加加号了！");return;}
     const arr=["+",...current];
     this.setState({current:arr,selectedIndex:0});
@@ -52,7 +51,7 @@ class MathToy extends Component {
     }
   }
   calculate(){
-   const {history,current,selectedIndex} = this.state;
+   const {history,current} = this.state;
     let arr,newHis,result;
     if(current.indexOf("(")>=0) {
       const left=current.indexOf("(");
@@ -98,7 +97,7 @@ class MathToy extends Component {
     }
   }
   render(){
-    const {history,current,selectedIndex}=this.state;
+    const {history,current}=this.state;
     const res=this.compare();
     return current.length===0?null:<div className="container">
       {history.map((x,i)=>(<div className={"expression"} key={i}>{i>0?["="].concat(x).join(""):x.join("")}</div>))}

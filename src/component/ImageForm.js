@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import {reduxForm,Field} from 'redux-form';
 import axios from 'axios';
 class ImageForm extends Component {
   constructor(props){

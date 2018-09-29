@@ -7,7 +7,6 @@ import {createStore,applyMiddleware} from 'redux';
 
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import AuthForm from './component/authForm';
 import reducer from './reducer';
 //redux-form的reducer在总reducer中的key必须是form
 
