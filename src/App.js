@@ -11,8 +11,11 @@ import {connect} from 'react-redux';
 import Profile from './container/Profile';
 import Aux from './utility/Aux';
 import MathPane from './component/MathPane';
-import Keyboard from './component/spell/keyboard.js';
+import SpellTest from './component/spell/SpellTest';
+import TestSuite from './component/spell/TestSuite';
+//import Keyboard from './component/spell/keyboard.js';
 //import {bindActionCreator
+import Beat from './component/beat';
 class App extends Component {
  
 
@@ -29,13 +32,17 @@ class App extends Component {
       <Link to='/getid'>get ID</Link>
       <Link to='/upload'>Upload</Link>
       <Link to='/toy'>MathPane</Link>
-      <Link to='/spell'>Spell toy</Link>
+      <Link to='/beat'>Beat</Link>
+      <Link to='/spell'>SpellTest</Link>
+      <Link to='/test'>TestSuite</Link>
       <Switch>
       <Route path="/signin" render={()=> <AuthForm onSubmit={signInSubmit} user={user} token={token} signOut={signOut}/>} />
       <Route path="/getid" component={Profile} />
-    <Route path="/upload" render={()=> <ImageForm onSubmit={imageUpload} />} />
+      <Route path="/upload" render={()=> <ImageForm onSubmit={imageUpload} />} />
       <Route path="/toy" render={()=> <MathPane />} />
-    <Route path="/spell" render={()=> <Keyboard string="hello" />} />
+      <Route path="/beat" render={()=><Beat subLength={1} length={2} unitDuration={500} />}/>
+      <Route path="/spell" render={()=><SpellTest word="hello" hint="你好" />}/>
+      <Route path="/test" render={()=><TestSuite />}/>
       </Switch>
     </Aux>
       </BrowserRouter>

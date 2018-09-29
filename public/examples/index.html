@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root">hello I'm back!!</div>
+    <button onclick="sendAjax1();return false;">
+      sendAjax1
+    </button>
+    <button onclick="sendAjax2();return false;">
+      sendAjax2
+    </button>
+    <button onclick="sendAjax3();return false;">
+      sendAjax3
+    </button>
+    <button onclick="sendAjax4();return false;">
+      sendAjax4
+    </button>
+    <div id="test">
+      <span id="result"></span>
+      <input id="input1"/>
+      <input id="input2"/>
+    </div>
+    <input type="file" multiple />
+    <img id="myimg" />
+    <form method="post" action="https://create-react-server.glitch.me/printRequest" enctype="multipart/form-data">
+      <input name="username" />
+      <input name="password" />
+      <input type="file" name="myfile" />
+      <button>submit</button>
+    </form>
+  </body>
+  <script>
+    var d=document.querySelector("#test");
+    d.addEventListener("change",changeHandler);
+    function changeHandler(e){
+     console.log(e); 
+    }
+function reqListener (event) {
+  console.log(event);
+  //注意这里this的用法，这个this指的就是xhr
+  console.log(this.responseText);
+}
+function reqListener2(){
+    //readyState的含义：0-刚开始还没open，1-已经open还没send，2-已经send，3-已经开始收到部分（也可以是全部）数据，4完成（也可能是出错完成）
+    if(this.readyState==4 ){
+      if(this.status==200) {
+         console.log(this.status,this.responseText); 
+      }
+      else {
+        console.log(this.status,"something is wrong!");
+      }
+     }
+    else if(this.readyState==3) {
+     console.log("partial loading...",this.responseText); 
+    }
+  };
+function progressListener(event){
+  if(event.lengthComputable){
+     console.log(event.loaded/event.total*100,"%"); 
+  }
+}
+function sendAjax1(){
+  //所有ajax的操作都有两个方面，一是发，二是收，以下前三句是发，最后一句是收，收依靠的是回调函数或者是事件处理器
+  var oReq = new XMLHttpRequest();
+  oReq.open("get", "https://create-react-server.glitch.me/getFile");
+  oReq.send("this is a hello world");
+  oReq.addEventListener("load", reqListener);
+}
+function sendAjax2(){
+  //所有ajax的操作都有两个方面，一是发，二是收，以下前三句是发，最后一句是收，收依靠的是回调函数或者是事件处理器
+  var oReq = new XMLHttpRequest();
+  oReq.open("GET", "https://create-react-server.glitch.me/getBigText");
+  oReq.send();
+  oReq.onload=reqListener;
+  oReq.onprogress=progressListener;
+}
+function sendAjax3(){
+  //所有ajax的操作都有两个方面，一是发，二是收，以下前三句是发，最后一句是收，收依靠的是回调函数或者是事件处理器
+  var oReq = new XMLHttpRequest();
+  
+  oReq.open("GET", "https://create-react-server.glitch.me/getBigText");
+
+  oReq.onreadystatechange=reqListener2;
+  oReq.send();
+  
+}
+function sendAjax4(){
+  //所有ajax的操作都有两个方面，一是发，二是收，以下前三句是发，最后一句是收，收依靠的是回调函数或者是事件处理器
+  var oReq = new XMLHttpRequest();
+  
+  oReq.open("GET", "https://cdn.glitch.com/054d3a0c-94e8-439a-912e-5a283ac06131%2Fabc.jpeg?1528470682035");
+  oReq.responseType="blob";
+  oReq.onload=function(e){
+    var img=document.getElementById("myimg");
+    //console.log(e.target.response);
+    //var blob = new Blob(["abcdefg"], {type: "octet/stream"})
+    var url=window.URL.createObjectURL(e.target.response);
+    img.src=url;
+    img.onload=function(){URL.revokeObjectURL(this.src)};
+    
+  
+  };
+  oReq.send();
+  
+}    
+  </script>
+</html>
